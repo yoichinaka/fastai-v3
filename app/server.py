@@ -16,7 +16,7 @@ export_file_name3 = 'trained_model.pth'
 
 #classes = ['black', 'grizzly', 'teddys']
 classes = ['Ablack', 'Bgrizzly', 'Cteddys', 'D']
-
+learn = cnn_learner(data, models.resnet34, metrics=error_rate)
 path = Path(__file__).parent
 
 app = Starlette()
