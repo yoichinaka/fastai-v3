@@ -15,9 +15,8 @@ export_file_url = 'https://drive.google.com/open?id=10erSaLgIJy9XwIEc0GztnsUm1Qj
 export_file_name = 'export.pkl'
 export_file_name3 = 'trained_model.pth'
 
-#path = Path('/app')
-path1 = Path(export_file_url)
-#path = Path('/content')
+path1 = Path('/app')
+#path1 = Path(export_file_url)
 learn1 = load_learner(path1, 'model.pkl')
 
 #classes = ['black', 'grizzly', 'teddys']
