@@ -14,8 +14,19 @@ export_file_url2 = 'https://drive.google.com/open?id=1HknzMdow0_4ItkKqzpGk-h0ais
 export_file_name = 'export.pkl'
 export_file_name3 = 'trained_model.pth'
 
+path = untar_data(URLs.PETS); path
+path_anno = path/'annotations'
+path_img = path/'images'
+fnames = get_image_files(path_img)
+np.random.seed(2)
+pat = r'/([^/]+)_\d+.jpg$'
+data = ImageDataBunch.from_name_re(path_img, fnames, pat, ds_tfms=get_transforms(), size=224, bs=bs
+                                  ).normalize(imagenet_stats)
+learn = cnn_learner(data, models.resnet34, metrics=error_rate)
+
 #classes = ['black', 'grizzly', 'teddys']
-classes = ['Ablack', 'Bgrizzly', 'Cteddys', 'D']
+#classes = ['Abyssinian', 'Bengal', 'Birman', 'Bombay', 'British_Shorthair', 'Egyptian_Mau', 'Maine_Coon', 'Persian', 'Ragdoll', 'Russian_Blue', 'Siamese', 'Sphynx', 'american_bulldog', 'american_pit_bull_terrier', 'basset_hound', 'beagle', 'boxer', 'chihuahua', 'english_cocker_spaniel', 'english_setter', 'german_shorthaired', 'great_pyrenees', 'havanese', 'japanese_chin', 'keeshond', 'leonberger', 'miniature_pinscher', 'newfoundland', 'pomeranian', 'pug', 'saint_bernard', 'samoyed', 'scottish_terrier', 'shiba_inu', 'staffordshire_bull_terrier', 'wheaten_terrier', 'yorkshire_terrier']
+
 learn = cnn_learner(data, models.resnet34, metrics=error_rate)
 path = Path(__file__).parent
 
