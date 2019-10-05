@@ -14,6 +14,7 @@ export_file_url2 = 'https://drive.google.com/open?id=1HknzMdow0_4ItkKqzpGk-h0ais
 export_file_name = 'export.pkl'
 export_file_name3 = 'trained_model.pth'
 
+bs = 64
 path = untar_data(URLs.PETS); path
 path_anno = path/'annotations'
 path_img = path/'images'
