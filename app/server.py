@@ -24,7 +24,8 @@ pat = r'/([^/]+)_\d+.jpg$'
 data = ImageDataBunch.from_name_re(path_img, fnames, pat, ds_tfms=get_transforms(), size=224, bs=bs
                                   ).normalize(imagenet_stats)
 learn = cnn_learner(data, models.resnet34, metrics=error_rate)
-learn1 = learn.load("app/trained_model")
+print('%%%%%%%%%%%%%', os.getcwd())
+learn1 = learn.load("/root/.fastai/data/oxford-iiit-pet/images/models/app/trained_model")
 
 #classes = ['black', 'grizzly', 'teddys']
 #classes = ['Abyssinian', 'Bengal', 'Birman', 'Bombay', 'British_Shorthair', 'Egyptian_Mau', 'Maine_Coon', 'Persian', 'Ragdoll', 'Russian_Blue', 'Siamese', 'Sphynx', 'american_bulldog', 'american_pit_bull_terrier', 'basset_hound', 'beagle', 'boxer', 'chihuahua', 'english_cocker_spaniel', 'english_setter', 'german_shorthaired', 'great_pyrenees', 'havanese', 'japanese_chin', 'keeshond', 'leonberger', 'miniature_pinscher', 'newfoundland', 'pomeranian', 'pug', 'saint_bernard', 'samoyed', 'scottish_terrier', 'shiba_inu', 'staffordshire_bull_terrier', 'wheaten_terrier', 'yorkshire_terrier']
