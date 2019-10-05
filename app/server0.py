@@ -9,16 +9,23 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
-export_file_url3 = 'https://www.dropbox.com/s/6bgq8t6yextloqp/export.pkl?raw=1'
+export_file_url = 'https://www.dropbox.com/s/6bgq8t6yextloqp/export.pkl?raw=1'
 export_file_url2 = 'https://drive.google.com/open?id=1HknzMdow0_4ItkKqzpGk-h0ais61zck3'
-export_file_url = 'https://drive.google.com/open?id=10erSaLgIJy9XwIEc0GztnsUm1QjYajKH'
 export_file_name = 'export.pkl'
 export_file_name3 = 'trained_model.pth'
 
-#path = Path('/app')
-path1 = Path(export_file_url)
-#path = Path('/content')
-learn1 = load_learner(path1, 'model.pkl')
+bs = 64
+path = untar_data(URLs.PETS); path
+path_anno = path/'annotations'
+path_img = path/'images'
+fnames = get_image_files(path_img)
+np.random.seed(2)
+pat = r'/([^/]+)_\d+.jpg$'
+data = ImageDataBunch.from_name_re(path_img, fnames, pat, ds_tfms=get_transforms(), size=224, bs=bs
+                                  ).normalize(imagenet_stats)
+learn = cnn_learner(data, models.resnet34, metrics=error_rate)
+print('%%%%%%%%%%%%%', os.getcwd())
+learn1 = learn.load("/root/.fastai/data/oxford-iiit-pet/images/models/app/trained_model")
 
 #classes = ['black', 'grizzly', 'teddys']
 #classes = ['Abyssinian', 'Bengal', 'Birman', 'Bombay', 'British_Shorthair', 'Egyptian_Mau', 'Maine_Coon', 'Persian', 'Ragdoll', 'Russian_Blue', 'Siamese', 'Sphynx', 'american_bulldog', 'american_pit_bull_terrier', 'basset_hound', 'beagle', 'boxer', 'chihuahua', 'english_cocker_spaniel', 'english_setter', 'german_shorthaired', 'great_pyrenees', 'havanese', 'japanese_chin', 'keeshond', 'leonberger', 'miniature_pinscher', 'newfoundland', 'pomeranian', 'pug', 'saint_bernard', 'samoyed', 'scottish_terrier', 'shiba_inu', 'staffordshire_bull_terrier', 'wheaten_terrier', 'yorkshire_terrier']
