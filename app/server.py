@@ -14,7 +14,9 @@ export_file_url2 = 'https://drive.google.com/open?id=1HknzMdow0_4ItkKqzpGk-h0ais
 export_file_name = 'export.pkl'
 export_file_name3 = 'trained_model.pth'
 
-classes = ['black', 'grizzly', 'teddys']
+#classes = ['black', 'grizzly', 'teddys']
+classes = ['Ablack', 'Bgrizzly', 'Cteddys', 'D']
+
 path = Path(__file__).parent
 
 app = Starlette()
