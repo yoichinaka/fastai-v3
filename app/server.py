@@ -10,9 +10,10 @@ from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
 export_file_url3 = 'https://www.dropbox.com/s/6bgq8t6yextloqp/export.pkl?raw=1'
-export_file_url2 = 'https://drive.google.com/open?id=1HknzMdow0_4ItkKqzpGk-h0ais61zck3'
+export_file_url2 = 'https://drive.google.com/'
 export_file_url = 'https://drive.google.com/open?id=10erSaLgIJy9XwIEc0GztnsUm1QjYajKH'
 export_file_name = 'export.pkl'
+export_file_name2 = 'open?id=1HknzMdow0_4ItkKqzpGk-h0ais61zck3'
 export_file_name3 = 'trained_model.pth'
 
 path1 = Path('/app')
